@@ -28,4 +28,12 @@ public class Books{ //Книги, с которыми работаем
     public int size(){
         return list.size();
     }
+    public Book findById(String id){
+        for (Book book: list) {
+            if(book.id.equals(id)){
+                return book;
+            }
+        }
+        return null;
+    }
 }

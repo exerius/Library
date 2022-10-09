@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Reader extends Human {
 
     public Reader(String name, String surname, String patronymic, String address, String id) {
