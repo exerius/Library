@@ -25,7 +25,8 @@ public class Main {
                             1- Add new book
                             2- Delete a book
                             3- Find a book
-                            4- Exit
+                            4- Gather statistics
+                            5- Exit
                             
                             """);
                 switch (sc.next()){
@@ -66,6 +67,18 @@ public class Main {
                         System.out.println(((Librarian) temp_human).findBookById(id, books));
                         break;
                     case "4":
+                        temp_human = new Manager("Ivanov", "Ivan",
+                            "Ivanovich", "temp", "000");
+                        Manager.Helper helper = new Manager.Helper(books);
+                        System.out.println("Книг выдано:");
+                        System.out.println(helper.statistics()[0]);
+                        System.out.println("Книг осталось:");
+                        System.out.println(helper.statistics()[1]);
+                        System.out.println("Введите категорию");
+                        Category ct = Category.valueOf(sc.next());
+                        System.out.println("Количество книг данной категории:");
+                        System.out.println(helper.countBooksByCategory(ct));
+                    case "5":
                         program_runs = false;
                         break;
                     default:
