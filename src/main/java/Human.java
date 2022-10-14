@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public abstract class Human { //Класс человека
-    public String name, surname, patronymic, address;
-    protected String id;
-    protected static ArrayList<String> listOfIds = new ArrayList<String>();
-    public Human(String name, String surname, String patronymic, String address, String id){
+public abstract class Human { //Класс человека (абстрактный)
+    public String name, surname, patronymic, address; //публичне данные
+    protected String id; // скрытые данные
+    protected static ArrayList<String> listOfIds = new ArrayList<String>(); // список всех id людей
+    public Human(String name, String surname, String patronymic, String address, String id){ //конструктор
             if(!listOfIds.contains(id)){
                 this.address = address;
                 this.id = id;
@@ -14,7 +14,7 @@ public abstract class Human { //Класс человека
                 listOfIds.add(id);
             }
     }
-    public Human(Human human){
+    public Human(Human human){ // другой конструктор
         this.address = human.address;
         this.id = human.id;
         this.name = human.name;
@@ -23,12 +23,12 @@ public abstract class Human { //Класс человека
 
     }
     public abstract void interactWithBook(Book book, Books list); // Данный метод описывает взаимодействие с книгой и списком книг
-    public void showData(){
+    public void showData(){ // метод вывода информации о себе
         System.out.println(name);
         System.out.println(surname);
         System.out.println(patronymic);
         System.out.println(address);
     }
 
-    public abstract Human clone();
+    public abstract Human clone(); // абстрактный метод самокопирования
 }

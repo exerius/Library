@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 public class Manager extends Human { //Класс менеджера
-    public Manager(String name, String surname, String patronymic, String address, String id) {
+    public Manager(String name, String surname, String patronymic, String address, String id) { //конструктор
         super(name, surname, patronymic, address, id);
     }
-    public Manager(Human human){
+    public Manager(Human human){ //другой конструктор
         super(human);
     }
-    enum Attributes  {name, author, publishHouse, publisher, category}
-    public static class Helper{
+    enum Attributes  {name, author, publishHouse, publisher, category}  //внутренне перечисление
+    public static class Helper{ //внутренний класс-помощник для сбора статистики по списку книг
         Books list;
-        public Helper(Books books){
+        public Helper(Books books){ //конструктор
             this.list = books;
         }
         public int[] statistics(){
@@ -26,7 +26,7 @@ public class Manager extends Human { //Класс менеджера
     }
 
     @Override
-    public void interactWithBook(Book book, Books list) {
+    public void interactWithBook(Book book, Books list) { // реализация абстрактного метода класса-родителя
         if(list.contains(book)){
             list.remove(book);
         }
@@ -34,10 +34,10 @@ public class Manager extends Human { //Класс менеджера
             list.add(book);
         }
     }
-    public Book[] booksByReader(Reader reader){
+    public Book[] booksByReader(Reader reader){ //получение информации о книгах читателя
        return reader.reportOnBooks();
     }
-    public Book transformBook(Book book){
+    public Book transformBook(Book book){ // изменение атрибута книги
         Scanner sc = new Scanner(System.in);
         System.out.println("Какой атрибут подлежит изменению?");
         Attributes attr = Attributes.valueOf(sc.next());
@@ -60,20 +60,20 @@ public class Manager extends Human { //Класс менеджера
     }
 
     @Override
-    public void showData() {
+    public void showData() { //вывод информации о себе
         super.showData();
         System.out.println(id);
     }
 
     @Override
-    public Human clone() {
+    public Human clone() { // клонирование (реализация абстрактного метода)
         return new Manager(this);
     }
 
-    public void statisticsByHuman(Human human){
+    public void statisticsByHuman(Human human){ //получение данных о друг человеке
         human.showData();
    }
-   public Human transformHuman(Human human){
+   public Human transformHuman(Human human){ // преобразование человека
        Scanner sc = new Scanner(System.in);
        System.out.println("Какой атрибут подлежит изменению?");
        String attr = sc.next();

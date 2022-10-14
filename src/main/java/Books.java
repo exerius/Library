@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class Books{ //Книги, с которыми работаем
-    private ArrayList<Book> list;
-    int handedOut;
+    private ArrayList<Book> list; //список книг
+    int handedOut; //кол-во выданных книг
     public Books(){
         list = new ArrayList<Book>();
-    }
-    public void add(Book book){
+    } //конструктор
+    public void add(Book book){ // добавление книги
         if(!list.contains(book)){
             list.add(book);
         }
@@ -16,19 +16,19 @@ public class Books{ //Книги, с которыми работаем
     }
     public void remove(Book book){
         list.remove(book);
-    }
+    } // удаление книги
     public boolean contains(Book book){
         return list.contains(book);
-    }
-    public int booksByCategory(Category category){
+    } // проверка существования
+    public int booksByCategory(Category category){ // подсчет кол-ва книг по категории
         ArrayList<Book> tempList = new ArrayList<Book>(list);
         tempList.removeIf(book -> (book.categoryOfBook != category));
         return tempList.size();
     }
     public int size(){
         return list.size();
-    }
-    public Book findById(String id){
+    } // вычисление собственного размера
+    public Book findById(String id){ // поиск книги по id (для библиотекаря)
         for (Book book: list) {
             if(book.id.equals(id)){
                 return book;
