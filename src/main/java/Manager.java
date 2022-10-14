@@ -4,6 +4,9 @@ public class Manager extends Human { //Класс менеджера
     public Manager(String name, String surname, String patronymic, String address, String id) {
         super(name, surname, patronymic, address, id);
     }
+    public Manager(Human human){
+        super(human);
+    }
     enum Attributes  {name, author, publishHouse, publisher, category}
     public static class Helper{
         Books list;
@@ -23,14 +26,13 @@ public class Manager extends Human { //Класс менеджера
     }
 
     @Override
-    public Book interactWithBook(Book book, Books list) {
+    public void interactWithBook(Book book, Books list) {
         if(list.contains(book)){
             list.remove(book);
         }
         else {
             list.add(book);
         }
-        return null;
     }
     public Book[] booksByReader(Reader reader){
        return reader.reportOnBooks();
@@ -41,21 +43,52 @@ public class Manager extends Human { //Класс менеджера
         Attributes attr = Attributes.valueOf(sc.next());
         System.out.println("Введите новое значение");
         String value = sc.next();
-        Book newBook = new Book(book);
+        Book newHuman = new Book(book);
         switch (attr){
             case author:
-                newBook.author = value;
+                newHuman.author = value;
             case name:
-                newBook.name = value;
+                newHuman.name = value;
             case  publisher:
-                newBook.publisher = value;
+                newHuman.publisher = value;
             case publishHouse:
-                newBook.publishHouse = value;
+                newHuman.publishHouse = value;
             case category:
-                newBook.categoryOfBook = Category.valueOf(value);
+                newHuman.categoryOfBook = Category.valueOf(value);
         }
-        return newBook;
+        return newHuman;
     }
 
+    @Override
+    public void showData() {
+        super.showData();
+        System.out.println(id);
+    }
 
-}
+    @Override
+    public Human clone() {
+        return new Manager(this);
+    }
+
+    public void statisticsByHuman(Human human){
+        human.showData();
+   }
+   public Human transformHuman(Human human){
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Какой атрибут подлежит изменению?");
+       String attr = sc.next();
+       System.out.println("Введите новое значение");
+       String value = sc.next();
+       Human newHuman = human.clone();
+       switch (attr){
+           case "name":
+               newHuman.name = value;
+           case "surname":
+               newHuman.surname = value;
+           case  "patronymic":
+               newHuman.patronymic = value;
+           case "adress":
+               newHuman.address = value;
+       }
+       return newHuman;
+   }}

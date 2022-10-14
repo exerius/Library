@@ -14,5 +14,21 @@ public abstract class Human { //Класс человека
                 listOfIds.add(id);
             }
     }
-    public abstract Book interactWithBook(Book book, Books list); // Данный метод описывает взаимодействие с книгой и списком книг
+    public Human(Human human){
+        this.address = human.address;
+        this.id = human.id;
+        this.name = human.name;
+        this.patronymic = human.patronymic;
+        this.surname = human.surname;
+
+    }
+    public abstract void interactWithBook(Book book, Books list); // Данный метод описывает взаимодействие с книгой и списком книг
+    public void showData(){
+        System.out.println(name);
+        System.out.println(surname);
+        System.out.println(patronymic);
+        System.out.println(address);
+    }
+
+    public abstract Human clone();
 }

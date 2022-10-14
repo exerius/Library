@@ -20,13 +20,14 @@ public class Main {
         variants user_profession;
         while(program_runs){
                 System.out.print("""
-                            ================Who are you? =============
+                            ================ Menu =============
                             
                             1- Add new book
                             2- Delete a book
                             3- Find a book
                             4- Gather statistics
-                            5- Exit
+                            5- Take book
+                            6- Exit
                             
                             """);
                 switch (sc.next()){
@@ -79,6 +80,15 @@ public class Main {
                         System.out.println("Количество книг данной категории:");
                         System.out.println(helper.countBooksByCategory(ct));
                     case "5":
+                        temp_human = new Librarian("Ivanov", "Ivan",
+                                "Ivanovich", "temp", "000");
+                        System.out.println("Enter book`s id");
+                        id = sc.next();
+                        Book book =  ((Librarian) temp_human).findBookById(id, books);
+                        temp_human = new Reader("Ivanov", "Ivan",
+                                "Ivanovich", "temp", "000");
+                        temp_human.interactWithBook(book, books);
+                    case "6":
                         program_runs = false;
                         break;
                     default:

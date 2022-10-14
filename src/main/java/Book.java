@@ -23,6 +23,6 @@ public class Book { // класс книги
 
     @Override
     public String toString() {
-        return "Book " + name + " by "+ author + "was published in " + year +" by " + publisher + " in " + publishHouse;
+        return "Book " + name + " by "+ author + " was published in " + year +" by " + publisher + " in " + publishHouse;
     }
 }
