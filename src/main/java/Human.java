@@ -1,6 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public abstract class Human { //Класс человека (абстрактный)
+public abstract class Human implements Serializable { //Класс человека (абстрактный)
     public String name, surname, patronymic, address; //публичне данные
     protected String id; // скрытые данные
     protected static ArrayList<String> listOfIds = new ArrayList<String>(); // список всех id людей
@@ -22,12 +24,36 @@ public abstract class Human { //Класс человека (абстрактн�
         this.surname = human.surname;
 
     }
+    public Human(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите фамилию");
+        this.surname = scanner.next();
+        System.out.println("Введите имя");
+        this.name = scanner.next();
+        System.out.println("Введите отчество");
+        this.name = scanner.next();
+        System.out.println("Введите id");
+        this.name = scanner.next();
+        System.out.println("Введите адрес");
+        this.name = scanner.next();
+
+    }
     public abstract void interactWithBook(Book book, Books list); // Данный метод описывает взаимодействие с книгой и списком книг
+    public abstract void interactWithBook(Book book, Books list, Human human);
     public void showData(){ // метод вывода информации о себе
         System.out.println(name);
         System.out.println(surname);
         System.out.println(patronymic);
         System.out.println(address);
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                '}';
     }
 
     public abstract Human clone(); // абстрактный метод самокопирования

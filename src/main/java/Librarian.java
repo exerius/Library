@@ -6,9 +6,23 @@ public class Librarian extends Human {
     public Librarian(Human human){
         super(human);
     }
+    public Librarian(){super();}
 
     @Override
     public void interactWithBook(Book book, Books list) {
+    }
+
+    @Override
+    public void interactWithBook(Book book, Books list, Human human) {
+        if(book.owner == null){
+            book.owner = (Reader) human;
+            list.handedOut += 1;
+        }
+        else{
+            book.owner = null;
+            list.handedOut -=1;
+        }
+
     }
 
     @Override
@@ -17,6 +31,7 @@ public class Librarian extends Human {
     }
 
     public Book findBookById(String id, Books list){
+        foundBook = list.findById(id);
         return list.findById(id);
     }
 }

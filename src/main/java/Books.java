@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Books{ //Книги, с которыми работаем
+public class Books implements Serializable { //Книги, с которыми работаем
     private ArrayList<Book> list; //список книг
     int handedOut; //кол-во выданных книг
     public Books(){

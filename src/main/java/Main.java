@@ -69,14 +69,14 @@ public class Main { //рабочий класс
                         System.out.println("Количество книг данной категории:");
                         System.out.println(helper.countBooksByCategory(ct));
                     case "5": // взять книгу
-                        temp_human = new Librarian("Ivanov", "Ivan",
+                       Librarian temp_human1 = new Librarian("Ivanov", "Ivan",
                                 "Ivanovich", "temp", "000"); //создаем библиотекаря, который найжет книгу
                         System.out.println("Enter book`s id");
                         id = sc.next();
-                        Book book =  ((Librarian) temp_human).findBookById(id, books);
-                        temp_human = new Reader("Ivanov", "Ivan",
-                                "Ivanovich", "temp", "000"); //создаем читателя, который воьметкнигу
-                        temp_human.interactWithBook(book, books);
+                        Reader temp_human2 = new Reader("Ivanov", "Ivan",
+                                "Ivanovich", "temp", "000"); //создаем читателя, который возьмет книгу
+                        Book book =  temp_human2.askLibrarianToFindBook(id, temp_human1, books);
+                        temp_human2.interactWithBook(book, books, temp_human1);
                     case "6": //выход из программы
                         program_runs = false;
                         break;

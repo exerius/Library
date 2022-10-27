@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Manager extends Human { //Класс менеджера
@@ -7,6 +8,7 @@ public class Manager extends Human { //Класс менеджера
     public Manager(Human human){ //другой конструктор
         super(human);
     }
+    public Manager(){super();}
     enum Attributes  {name, author, publishHouse, publisher, category}  //внутренне перечисление
     public static class Helper{ //внутренний класс-помощник для сбора статистики по списку книг
         Books list;
@@ -34,7 +36,13 @@ public class Manager extends Human { //Класс менеджера
             list.add(book);
         }
     }
-    public Book[] booksByReader(Reader reader){ //получение информации о книгах читателя
+
+    @Override
+    public void interactWithBook(Book book, Books list, Human human) {
+
+    }
+
+    public ArrayList<Book> booksByReader(Reader reader){ //получение информации о книгах читателя
        return reader.reportOnBooks();
     }
     public Book transformBook(Book book){ // изменение атрибута книги
