@@ -45,26 +45,29 @@ public class Manager extends Human { //Класс менеджера
     public ArrayList<Book> booksByReader(Reader reader){ //получение информации о книгах читателя
        return reader.reportOnBooks();
     }
-    public Book transformBook(Book book){ // изменение атрибута книги
+    public void transformBook(Book book){ // изменение атрибута книги
         Scanner sc = new Scanner(System.in);
         System.out.println("Какой атрибут подлежит изменению?");
         Attributes attr = Attributes.valueOf(sc.next());
         System.out.println("Введите новое значение");
-        String value = sc.next();
         Book newHuman = new Book(book);
         switch (attr){
             case author:
-                newHuman.author = value;
+                book.author = sc.next();
+                break;
             case name:
-                newHuman.name = value;
+                book.name = sc.next();
+                break;
             case  publisher:
-                newHuman.publisher = value;
+                book.publisher = sc.next();
+                break;
             case publishHouse:
-                newHuman.publishHouse = value;
+                book.publishHouse = sc.next();
+                break;
             case category:
-                newHuman.categoryOfBook = Category.valueOf(value);
+                book.categoryOfBook = Category.valueOf(sc.next());
+                break;
         }
-        return newHuman;
     }
 
     @Override
@@ -73,30 +76,26 @@ public class Manager extends Human { //Класс менеджера
         System.out.println(id);
     }
 
-    @Override
-    public Human clone() { // клонирование (реализация абстрактного метода)
-        return new Manager(this);
-    }
-
     public void statisticsByHuman(Human human){ //получение данных о друг человеке
         human.showData();
    }
-   public Human transformHuman(Human human){ // преобразование человека
+   public void transformHuman(Human human){ // преобразование человека
        Scanner sc = new Scanner(System.in);
        System.out.println("Какой атрибут подлежит изменению?");
        String attr = sc.next();
        System.out.println("Введите новое значение");
-       String value = sc.next();
-       Human newHuman = human.clone();
        switch (attr){
            case "name":
-               newHuman.name = value;
+               human.name = sc.next();
+               break;
            case "surname":
-               newHuman.surname = value;
+               human.surname = sc.next();
+               break;
            case  "patronymic":
-               newHuman.patronymic = value;
+               human.patronymic = sc.next();
+               break;
            case "adress":
-               newHuman.address = value;
+               human.address = sc.next();
+               break;
        }
-       return newHuman;
    }}

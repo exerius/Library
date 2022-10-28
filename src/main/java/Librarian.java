@@ -1,5 +1,5 @@
 public class Librarian extends Human {
-    Book foundBook = null;
+    Book foundBook = null; // найденная книга
     public Librarian(String name, String surname, String patronymic, String address, String id) {
         super(name, surname, patronymic, address, id);
     }
@@ -13,7 +13,7 @@ public class Librarian extends Human {
     }
 
     @Override
-    public void interactWithBook(Book book, Books list, Human human) {
+    public void interactWithBook(Book book, Books list, Human human) { //взять или выдать книгу
         if(book.owner == null){
             book.owner = (Reader) human;
             list.handedOut += 1;
@@ -25,12 +25,7 @@ public class Librarian extends Human {
 
     }
 
-    @Override
-    public Human clone() {
-        return new Librarian(this);
-    }
-
-    public Book findBookById(String id, Books list){
+    public Book findBookById(String id, Books list){ //поиск книги
         foundBook = list.findById(id);
         return list.findById(id);
     }

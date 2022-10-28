@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Books implements Serializable { //Книги, с которыми работаем
-    private ArrayList<Book> list; //список книг
+    public ArrayList<Book> list; //список книг
     int handedOut; //кол-во выданных книг
     public Books(){
         list = new ArrayList<Book>();

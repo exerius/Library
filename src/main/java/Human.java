@@ -31,11 +31,11 @@ public abstract class Human implements Serializable { //Класс челове�
         System.out.println("Введите имя");
         this.name = scanner.next();
         System.out.println("Введите отчество");
-        this.name = scanner.next();
+        this.patronymic = scanner.next();
         System.out.println("Введите id");
-        this.name = scanner.next();
+        this.id = scanner.next();
         System.out.println("Введите адрес");
-        this.name = scanner.next();
+        this.address = scanner.next();
 
     }
     public abstract void interactWithBook(Book book, Books list); // Данный метод описывает взаимодействие с книгой и списком книг
@@ -49,12 +49,8 @@ public abstract class Human implements Serializable { //Класс челове�
 
     @Override
     public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
+        return "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                '}';
+                ", patronymic='" + patronymic + '\'';
     }
-
-    public abstract Human clone(); // абстрактный метод самокопирования
 }
